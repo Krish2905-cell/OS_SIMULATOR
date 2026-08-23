@@ -1,18 +1,18 @@
-import { useState } from "react";
-import { fcfs } from "./../algorithms/fcfs";
+import { useState } from "react"; // this is a React hook that allows you to add state to functional components
+import { fcfs } from "./../algorithms/fcfs"; // this imports the fcfs function from the algorithms folder
 
-function FCFS() {
-    const [processes, setProcesses] = useState([
+function FCFS() { // this is the main function that defines the FCFS component
+    const [processes, setProcesses] = useState([ //this is a state variable that holds the list of processes
         { id: 1, arrival: 0, burst: 5 },
         { id: 2, arrival: 1, burst: 3 },
         { id: 3, arrival: 2, burst: 8 }
     ]);
 
-    const [results, setResults] = useState([]);
+    const [results, setResults] = useState([]); // this is a state variable that holds the results of the scheduling algorithm
 
-    function handleRun() {
-        const output = fcfs(processes);
-        setResults(output);
+    function handleRun() { // this function is called when the user clicks the "Run FCFS" button
+        const output = fcfs(processes); // this calls the fcfs function with the list of processes and stores the output in a variable
+        setResults(output); // this updates the results state variable with the output of the fcfs function
     }
 
     return (
