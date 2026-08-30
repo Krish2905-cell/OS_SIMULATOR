@@ -12,7 +12,7 @@ function FCFS() { // this is the main function that defines the FCFS component
 
     function handleRun() { // this function is called when the user clicks the "Run FCFS" button
         const output = fcfs(processes); // this calls the fcfs function with the list of processes and stores the output in a variable
-        setResults(output); // this updates the results state variable with the output of the fcfs function
+        setResults(output); // this updates the results state variable with the output of the fcfs functiokon
     }
 
     return (

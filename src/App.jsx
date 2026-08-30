@@ -3,6 +3,7 @@ import FCFS from "./components/FCFS";
 import SJF from "./components/SJF";
 import Priority from "./components/Priority";
 import RoundRobin from "./components/RoundRobin";
+import Bankers from './components/Bankers';
 import "./App.css";
 
 function App() {
@@ -131,10 +132,12 @@ function App() {
             OTHER MODULES
           </div>
 
-          <button className="nav-item disabled">
-            <span className="nav-icon">🔒</span>
+          <button
+            className={`nav-item ${activeModule === "bankers" ? "active" : ""}`}
+            onClick={() => setActiveModule("bankers")}
+          >
+            <span className="nav-icon">🏦</span>
             <span>Banker's Algorithm</span>
-            <span className="coming-soon">Soon</span>
           </button>
 
           <button className="nav-item disabled">
@@ -191,6 +194,18 @@ function App() {
 
                 <span className="breadcrumb-current">
                   {activeAlgorithm.label}
+                </span>
+              </>
+            )}
+
+            {activeModule === "bankers" && (
+              <>
+                <span className="breadcrumb-separator">
+                  /
+                </span>
+
+                <span className="breadcrumb-current">
+                  Banker's Algorithm
                 </span>
               </>
             )}
@@ -622,6 +637,62 @@ function App() {
 
             </div>
 
+          )}
+
+
+          {/* BANKER'S ALGORITHM PAGE */}
+          {activeModule === "bankers" && (
+            <div className="simulation-page">
+
+              <section className="simulation-header">
+                <div>
+                  <div className="page-badge">DEADLOCK AVOIDANCE</div>
+                  <h1>Banker's Algorithm</h1>
+                  <p>
+                    Check whether the current resource allocation state
+                    is safe, and find a safe execution sequence.
+                  </p>
+                </div>
+
+                <div className="algorithm-status">
+                  <span className="status-dot"></span>
+                  Ready to Run
+                </div>
+              </section>
+
+              <section className="simulator-card">
+
+                <div className="simulator-card-header">
+                  <div>
+                    <span className="live-label">● LIVE SIMULATION</span>
+                    <h2>Safety Check</h2>
+                  </div>
+
+                  <div className="execution-badge">
+                    Ready
+                  </div>
+                </div>
+
+                <div className="algorithm-component">
+                  <Bankers />
+                </div>
+
+              </section>
+
+              <section className="learning-card">
+                <div className="learning-icon">💡</div>
+                <div>
+                  <h3>Understanding Banker's Algorithm</h3>
+                  <p>
+                    Banker's Algorithm checks if granting a resource
+                    request could lead to deadlock, by simulating whether
+                    every process can eventually finish. If a safe
+                    sequence exists, the system is in a safe state.
+                  </p>
+                </div>
+              </section>
+
+            </div>
           )}
 
         </div>
